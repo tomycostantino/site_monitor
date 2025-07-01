@@ -1,15 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  site: one
-  status: MyString
-  response_code: 1
-  error_message: MyText
-  captured_at: MyString
+valid_site_snapshot_1:
+  site: valid_site
+  status: "success"
+  response_code: 200
+  error_message: null
+  captured_at: <%= 1.hour.ago %>
 
-two:
-  site: two
-  status: MyString
-  response_code: 1
-  error_message: MyText
-  captured_at: MyString
+valid_site_snapshot_2:
+  site: valid_site
+  status: "success"
+  response_code: 200
+  error_message: null
+  captured_at: <%= 2.hours.ago %>
+
+google_snapshot_1:
+  site: google
+  status: "success"
+  response_code: 200
+  error_message: null
+  captured_at: <%= 30.minutes.ago %>
+
+failed_snapshot:
+  site: unreachable_site
+  status: "error"
+  response_code: 0
+  error_message: "Connection timeout"
+  captured_at: <%= 1.day.ago %>

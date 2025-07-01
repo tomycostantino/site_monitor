@@ -1,17 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: MyString
-  start_time: 2025-07-01 22:41:12
-  end_time: 2025-07-01 22:41:12
-  frequency_seconds: 1
-  timezone_offset: 1
-  active: 1
+valid_site:
+  url: "https://www.example.com"
+  monitor_start_time: "08:00:00"
+  monitor_end_time: "17:00:00"
+  frequency_seconds: 300
+  timezone_offset_hours: 0
+  active: true
 
-two:
-  url: MyString
-  start_time: 2025-07-01 22:41:12
-  end_time: 2025-07-01 22:41:12
-  frequency_seconds: 1
-  timezone_offset: 1
-  active: 1
+google:
+  url: "https://www.google.com"
+  monitor_start_time: "09:00:00"
+  monitor_end_time: "18:00:00"
+  frequency_seconds: 60
+  timezone_offset_hours: -8
+  active: true
+
+inactive_site:
+  url: "https://www.github.com"
+  monitor_start_time: "06:00:00"
+  monitor_end_time: "22:00:00"
+  frequency_seconds: 600
+  timezone_offset_hours: 5
+  active: false
+
+unreachable_site:
+  url: "https://thissitedoesnotexist12345.com"
+  monitor_start_time: "08:00:00"
+  monitor_end_time: "20:00:00"
+  frequency_seconds: 120
+  timezone_offset_hours: 0
+  active: true
