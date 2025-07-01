@@ -1,0 +1,41 @@
+<div class="status-history-card">
+  <h2 class="card-title">Recent Status</h2>
+
+  <% if site.snapshots.any? %>
+    <div class="status-list">
+      <% site.snapshots.order(created_at: :desc).limit(5).each do |snapshot| %>
+        <div class="status-item">
+          <div class="status-dot <%= snapshot.status&.downcase %>"></div>
+          <div class="status-content">
+            <div class="status-info">
+              <span class="status-code">
+                <%= snapshot.response_code || 'N/A' %>
+              </span>
+              <span class="status-text">
+                <%= snapshot.status&.humanize || 'Unknown' %>
+              </span>
+            </div>
+            <div class="status-time">
+              <%= time_ago_in_words(snapshot.created_at) %> ago
+            </div>
+            <% if snapshot.error_message.present? %>
+              <div class="status-error">
+                <%= truncate(snapshot.error_message, length: 50) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="view-all-link">
+      <%= link_to "View Full History", "#", class: "text-link" %>
+    </div>
+  <% else %>
+    <div class="empty-status">
+      <div class="empty-icon">📊</div>
+      <p>No status checks yet</p>
+      <p class="empty-description">Status history will appear after the first monitoring check</p>
+    </div>
+  <% end %>
+</div>

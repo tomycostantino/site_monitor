@@ -1,0 +1,15 @@
+<div class="site-show">
+  <%= render 'sites/partials/site_header', site: @site %>
+
+  <div class="site-content">
+    <div class="main-content">
+      <%= render 'sites/partials/site_details', site: @site %>
+      <%= render 'sites/partials/site_monitoring_info', site: @site %>
+    </div>
+
+    <div class="sidebar">
+      <%= render 'sites/partials/site_actions', site: @site %>
+      <%= render 'sites/partials/site_status_history', site: @site %>
+    </div>
+  </div>
+</div>

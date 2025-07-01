@@ -1,0 +1,36 @@
+<div class="site-card">
+  <%= link_to site_path(site), class: "site-card-link" do %>
+    <div class="site-card-header">
+      <h3 class="site-url"><%= site.url %></h3>
+      <span class="status-badge <%= site.active? ? 'active' : 'inactive' %>">
+        <%= site.active? ? 'Active' : 'Inactive' %>
+      </span>
+    </div>
+
+    <div class="site-card-details">
+      <div class="detail-item">
+        <span class="label">Frequency:</span>
+        <span class="value"><%= site.frequency_seconds %>s</span>
+      </div>
+
+      <% if site.monitor_start_time && site.monitor_end_time %>
+        <div class="detail-item">
+          <span class="label">Monitor Hours:</span>
+          <span class="value">
+            <%= site.monitor_start_time.strftime("%H:%M") %> -
+            <%= site.monitor_end_time.strftime("%H:%M") %>
+          </span>
+        </div>
+      <% end %>
+
+      <div class="detail-item">
+        <span class="label">Added:</span>
+        <span class="value"><%= site.created_at.strftime("%b %d, %Y") %></span>
+      </div>
+    </div>
+
+    <div class="site-card-footer">
+      <span class="view-details">View Details →</span>
+    </div>
+  <% end %>
+</div>

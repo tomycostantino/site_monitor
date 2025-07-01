@@ -1,0 +1,50 @@
+<div class="site-details-card">
+  <h2 class="card-title">Site Details</h2>
+
+  <div class="details-grid">
+    <div class="detail-row">
+      <span class="detail-label">URL</span>
+      <span class="detail-value">
+        <%= link_to site.url, site.url, target: "_blank", rel: "noopener", class: "external-link" %>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Status</span>
+      <span class="detail-value">
+        <span class="status-indicator <%= site.active? ? 'active' : 'inactive' %>"></span>
+        <%= site.active? ? 'Monitoring Active' : 'Monitoring Paused' %>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Check Frequency</span>
+      <span class="detail-value"><%= pluralize(site.frequency_seconds, 'second') %></span>
+    </div>
+
+    <% if site.timezone_offset_hours && site.timezone_offset_hours != 0 %>
+      <div class="detail-row">
+        <span class="detail-label">Timezone Offset</span>
+        <span class="detail-value">
+          <%= site.timezone_offset_hours > 0 ? '+' : '' %><%= site.timezone_offset_hours %> hours
+        </span>
+      </div>
+    <% end %>
+
+    <div class="detail-row">
+      <span class="detail-label">Created</span>
+      <span class="detail-value">
+        <%= site.created_at.strftime("%B %d, %Y at %l:%M %p") %>
+      </span>
+    </div>
+
+    <% if site.updated_at != site.created_at %>
+      <div class="detail-row">
+        <span class="detail-label">Last Updated</span>
+        <span class="detail-value">
+          <%= site.updated_at.strftime("%B %d, %Y at %l:%M %p") %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
