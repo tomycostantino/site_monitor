@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  start_time: 2025-07-01 22:41:12
+  end_time: 2025-07-01 22:41:12
+  frequency_seconds: 1
+  timezone_offset: 1
+  active: 1
+
+two:
+  url: MyString
+  start_time: 2025-07-01 22:41:12
+  end_time: 2025-07-01 22:41:12
+  frequency_seconds: 1
+  timezone_offset: 1
+  active: 1
