@@ -52,10 +52,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_01_124444) do
 
   create_table "sites", force: :cascade do |t|
     t.string "url", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.time "monitor_start_time"
+    t.time "monitor_end_time"
     t.integer "frequency_seconds", default: 60
-    t.integer "timezone_offset", default: 0
+    t.integer "timezone_offset_hours", default: 0
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
