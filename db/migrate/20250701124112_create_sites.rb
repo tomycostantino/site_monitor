@@ -1,7 +1,7 @@
 class CreateSites < ActiveRecord::Migration[8.0]
   def change
     create_table :sites do |t|
-      t.string :url, unique: true, null: false
+      t.string :url, null: false
       t.datetime :start_time
       t.datetime :end_time
       t.integer :frequency_seconds, default: 60.seconds
@@ -10,6 +10,6 @@ class CreateSites < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    add_index :sites, :url
+    add_index :sites, :url, unique: true
   end
 end
