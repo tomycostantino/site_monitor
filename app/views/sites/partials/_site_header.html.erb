@@ -1,8 +1,8 @@
 <header>
   <%= link_to "← Back to Sites", sites_path, class: "link link-bold" %>
 
-<div class="page-header">
-          <h1 class="page-title"><%= site.url %></h1>
+    <div class="page-header">
+      <h1><%= site.title %></h1>
     <div class="meta">
       <span class="status-badge <%= site.active? ? 'active' : 'inactive' %>">
         <%= site.active? ? 'Active' : 'Inactive' %>

@@ -11,6 +11,17 @@
   <% end %>
 
   <div class="input-group">
+    <%= form.label :title %>
+    <%= form.text_field :title,
+                  class: "input #{'input-error' if site.errors[:title].any?}",
+                  placeholder: "My Site",
+                  required: true %>
+    <% if site.errors[:title].any? %>
+      <div class="error-text"><%= site.errors[:title].first %></div>
+    <% end %>
+  </div>
+
+  <div class="input-group">
     <%= form.label :url %>
     <%= form.url_field :url,
                        class: "input #{'input-error' if site.errors[:url].any?}",

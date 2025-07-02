@@ -46,7 +46,7 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:url, :monitor_start_time, :monitor_end_time,
+    params.require(:site).permit(:title, :url, :monitor_start_time, :monitor_end_time,
                                  :frequency_seconds, :timezone_offset_hours, :active)
   end
 end

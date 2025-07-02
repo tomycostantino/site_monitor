@@ -21,14 +21,6 @@
     margin-bottom: var(--spacing-2xl);
 }
 
-.page-title {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--color-text-secondary);
-    margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
-    word-break: break-all;
-}
-
 .meta {
     display: flex;
     gap: var(--spacing-lg);
@@ -172,10 +164,6 @@
     .layout {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
-    }
-
-    .page-title {
-        font-size: var(--font-size-2xl);
     }
 
     .meta {
