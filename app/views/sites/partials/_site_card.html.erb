@@ -1,7 +1,7 @@
 <div class="card">
   <%= link_to site_path(site), class: "card-link" do %>
     <header class="card-header">
-      <h4><%= site.url %></h4>
+      <h4><%= site.title %></h4>
       <span class="status-badge <%= site.active? ? 'active' : 'inactive' %>">
         <%= site.active? ? 'Active' : 'Inactive' %>
       </span>
