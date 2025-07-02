@@ -1,3 +1,30 @@
+.alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 90vw;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease-out;
+    word-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.alert-success {
+    background-color: var(--color-success);
+    color: white;
+}
+
+.alert-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -61,6 +88,7 @@
 
 .btn-danger:hover {
     background-color: var(--color-danger-dark);
+    color: white;
 }
 
 .btn-full {

@@ -23,6 +23,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if notice %>
+      <div class="alert alert-success" data-controller="flash">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger" data-controller="flash">
+        <%= alert %>
+      </div>
+    <% end %>
+  <%= yield %>
   </body>
 </html>

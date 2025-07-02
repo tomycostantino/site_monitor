@@ -33,7 +33,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "Site was successfully deleted."
   end
 
   private
