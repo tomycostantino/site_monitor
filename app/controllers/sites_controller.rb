@@ -14,6 +14,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     if @site.save
+      Site::SnapshotSchedulerJob.perform_later(@site)
       redirect_to @site, notice: "Site was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -25,6 +26,7 @@ class SitesController < ApplicationController
 
   def update
     if @site.update(site_params)
+      Site::SnapshotSchedulerJob.perform_later(@site)
       redirect_to @site, notice: "Site was successfully updated."
     else
       render :edit, status: :unprocessable_entity
