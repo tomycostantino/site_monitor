@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   before_action :set_sites, only: [ :index ]
-  before_action :set_site, only: [ :show, :new, :edit, :destroy ]
+  before_action :set_site, only: [ :show, :new, :edit, :update, :destroy ]
   def index
     @sites = Site.all
   end
@@ -9,7 +9,6 @@ class SitesController < ApplicationController
   end
 
   def new
-    @site = Site.new
   end
 
   def create
@@ -22,6 +21,14 @@ class SitesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @site.update(site_params)
+      redirect_to @site, notice: "Site was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,6 +46,7 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:url, :monitor_start_time, :monitor_end_time, :frequency_seconds, :timezone_offset_hours, :active)
+    params.require(:site).permit(:url, :monitor_start_time, :monitor_end_time,
+                                 :frequency_seconds, :timezone_offset_hours, :active)
   end
 end

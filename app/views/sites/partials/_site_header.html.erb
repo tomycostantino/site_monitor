@@ -1,17 +1,13 @@
-<div class="site-header">
-  <div class="breadcrumb">
-    <%= link_to "← Back to Sites", sites_path, class: "back-link" %>
-  </div>
+<header>
+  <%= link_to "← Back to Sites", sites_path, class: "link link-bold" %>
 
-  <div class="site-title-section">
-    <div class="site-title-info">
-      <h1 class="site-title"><%= site.url %></h1>
-      <div class="site-meta">
-        <span class="status-badge <%= site.active? ? 'active' : 'inactive' %>">
-          <%= site.active? ? 'Active' : 'Inactive' %>
-        </span>
-        <span class="created-date">Added <%= site.created_at.strftime("%B %d, %Y") %></span>
-      </div>
+<div class="page-header">
+          <h1 class="page-title"><%= site.url %></h1>
+    <div class="meta">
+      <span class="status-badge <%= site.active? ? 'active' : 'inactive' %>">
+        <%= site.active? ? 'Active' : 'Inactive' %>
+      </span>
+      <span class="text-muted">Added <%= site.created_at.strftime("%B %d, %Y") %></span>
     </div>
   </div>
-</div>
+</header>

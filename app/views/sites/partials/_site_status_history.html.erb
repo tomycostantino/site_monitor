@@ -1,25 +1,23 @@
-<div class="status-history-card">
-  <h2 class="card-title">Recent Status</h2>
+<div class="card">
+  <h2>Recent Status</h2>
 
   <% if site.snapshots.any? %>
     <div class="status-list">
       <% site.snapshots.order(created_at: :desc).limit(5).each do |snapshot| %>
-        <div class="status-item">
+        <div class="status">
           <div class="status-dot <%= snapshot.status&.downcase %>"></div>
-          <div class="status-content">
-            <div class="status-info">
-              <span class="status-code">
+          <div class="status-info">
+            <div>
+              <span class="font-semibold">
                 <%= snapshot.response_code || 'N/A' %>
               </span>
-              <span class="status-text">
-                <%= snapshot.status&.humanize || 'Unknown' %>
-              </span>
+              <%= snapshot.status&.humanize || 'Unknown' %>
             </div>
-            <div class="status-time">
+            <div class="text-muted">
               <%= time_ago_in_words(snapshot.created_at) %> ago
             </div>
             <% if snapshot.error_message.present? %>
-              <div class="status-error">
+              <div class="text-danger">
                 <%= truncate(snapshot.error_message, length: 50) %>
               </div>
             <% end %>
@@ -28,14 +26,14 @@
       <% end %>
     </div>
 
-    <div class="view-all-link">
-      <%= link_to "View Full History", "#", class: "text-link" %>
+    <div class="text-center">
+      <%= link_to "View Full History", "#", class: "link" %>
     </div>
   <% else %>
-    <div class="empty-status">
-      <div class="empty-icon">📊</div>
+    <div class="empty-state">
+      <div>📊</div>
       <p>No status checks yet</p>
-      <p class="empty-description">Status history will appear after the first monitoring check</p>
+      <p class="text-muted">Status history will appear after the first monitoring check</p>
     </div>
   <% end %>
 </div>

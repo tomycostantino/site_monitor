@@ -1,15 +1,15 @@
-<div class="site-show">
+<div class="container">
   <%= render 'sites/partials/site_header', site: @site %>
 
-  <div class="site-content">
-    <div class="main-content">
+  <div class="site-layout">
+    <main class="flex-col">
       <%= render 'sites/partials/site_details', site: @site %>
       <%= render 'sites/partials/site_monitoring_info', site: @site %>
-    </div>
+    </main>
 
-    <div class="sidebar">
+    <aside class="flex-col">
       <%= render 'sites/partials/site_actions', site: @site %>
       <%= render 'sites/partials/site_status_history', site: @site %>
-    </div>
+    </aside>
   </div>
 </div>

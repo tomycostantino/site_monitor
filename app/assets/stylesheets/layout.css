@@ -29,6 +29,12 @@
     flex-direction: column;
 }
 
+.flex-col-md {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
 .flex-wrap {
     flex-wrap: wrap;
 }

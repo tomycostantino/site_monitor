@@ -1,0 +1,61 @@
+<%= form_with model: site, local: true, class: "form" do |form| %>
+  <% if site.errors.any? %>
+    <div class="error-box">
+      <h3><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h3>
+      <ul>
+        <% site.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group">
+    <%= form.label :url %>
+    <%= form.url_field :url,
+                       class: "input #{'input-error' if site.errors[:url].any?}",
+                       placeholder: "https://example.com",
+                       required: true %>
+    <% if site.errors[:url].any? %>
+      <div class="error-text"><%= site.errors[:url].first %></div>
+    <% end %>
+  </div>
+
+  <div class="input-group">
+    <%= form.label :frequency_seconds, "Check every (seconds)", class: "label" %>
+    <%= form.number_field :frequency_seconds,
+                          class: "input",
+                          placeholder: "60",
+                          min: 30,
+                          step: 30,
+                          value: site.frequency_seconds || 60 %>
+  </div>
+
+  <div class="input-group">
+    <%= form.label :timezone_offset_hours, "Timezone offset (hours from UTC)", class: "label" %>
+    <%= form.number_field :timezone_offset_hours,
+                          class: "input",
+                          placeholder: "0",
+                          min: -12,
+                          max: 12,
+                          step: 1,
+                          value: site.timezone_offset_hours || 0 %>
+  </div>
+
+  <div class="input-row">
+    <div class="input-group">
+      <%= form.label :monitor_start_time, "Start monitoring at:", class: "label" %>
+      <%= form.time_field :monitor_start_time, class: "input", required: true %>
+    </div>
+
+    <div class="input-group">
+      <%= form.label :monitor_end_time, "Stop monitoring at:", class: "label" %>
+      <%= form.time_field :monitor_end_time, class: "input", required: true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", site.persisted? ? site_path(site) : sites_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

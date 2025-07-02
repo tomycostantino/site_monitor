@@ -1,48 +1,34 @@
-<div class="monitoring-info-card">
+<div class="card">
   <h2 class="card-title">Monitoring Schedule</h2>
 
-  <div class="monitoring-details">
+  <div class="details">
     <% if site.monitor_start_time && site.monitor_end_time %>
-      <div class="schedule-item active-schedule">
-        <div class="schedule-icon">🕐</div>
-        <div class="schedule-content">
-          <h3>Active Hours</h3>
-          <p class="schedule-time">
-            <%= site.monitor_start_time.strftime("%H:%M") %> -
-            <%= site.monitor_end_time.strftime("%H:%M") %>
-          </p>
-          <p class="schedule-description">
-            Monitoring is active during these hours daily
-          </p>
-        </div>
+      <div class="detail">
+        <span>🕐 Active Hours</span>
+        <span>
+          <%= site.monitor_start_time.strftime("%H:%M") %> -
+          <%= site.monitor_end_time.strftime("%H:%M") %> daily
+        </span>
       </div>
     <% else %>
-      <div class="schedule-item">
-        <div class="schedule-icon">🔄</div>
-        <div class="schedule-content">
-          <h3>24/7 Monitoring</h3>
-          <p class="schedule-description">
-            Continuous monitoring with no time restrictions
-          </p>
-        </div>
+      <div class="detail">
+        <span>🔄 Schedule</span>
+        <span>24/7 monitoring</span>
       </div>
     <% end %>
 
-    <div class="schedule-item">
-      <div class="schedule-icon">⚡</div>
-      <div class="schedule-content">
-        <h3>Check Interval</h3>
-        <p class="schedule-time">Every <%= pluralize(site.frequency_seconds, 'second') %></p>
-        <p class="schedule-description">
-          <% if site.frequency_seconds < 60 %>
-            High frequency monitoring
-          <% elsif site.frequency_seconds < 300 %>
-            Standard monitoring frequency
-          <% else %>
-            Low frequency monitoring
-          <% end %>
-        </p>
-      </div>
+    <div class="detail">
+      <span>⚡ Check Interval</span>
+      <span>
+        Every <%= pluralize(site.frequency_seconds, 'second') %>
+        <% if site.frequency_seconds < 60 %>
+          (high frequency)
+        <% elsif site.frequency_seconds < 300 %>
+          (standard frequency)
+        <% else %>
+          (low frequency)
+        <% end %>
+      </span>
     </div>
   </div>
 </div>

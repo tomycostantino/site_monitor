@@ -1,22 +1,19 @@
-<div class="sites-index">
-  <div class="header">
-    <h1>Site Monitor</h1>
-    <p class="subtitle">Monitor your websites with ease</p>
-  </div>
+<div class="container">
+  <header class="text-center">
+    <h1 class="page-title">Site Monitor</h1>
+    <p class="text-muted">Snapshot websites automatically</p>
+  </header>
 
-  <div class="sites-grid">
-    <% if @sites.any? %>
+  <% if @sites.any? %>
+    <div class="grid">
       <% @sites.each do |site| %>
         <%= render 'sites/partials/site_card', site: site %>
       <% end %>
-    <% else %>
-      <div class="empty-state">
-        <h2>No sites yet</h2>
-        <p>Start monitoring by adding your first site.</p>
-        <%= link_to "Add Site", new_site_path, class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
-
-  <%= link_to "Add New Site", new_site_path, class: "btn btn-primary add-site-btn" if @sites.any? %>
+    </div>
+    <%= link_to "Add site", new_site_path, class: "btn btn-primary floating-btn" %>
+  <% else %>
+    <div class="empty-state">
+      <%= link_to "Add your first site", new_site_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>

@@ -1,34 +1,25 @@
-<div class="site-actions-card">
+<div class="card">
   <h2 class="card-title">Actions</h2>
 
-  <div class="actions-list">
-    <%= link_to edit_site_path(site), class: "action-btn primary" do %>
-      <span class="action-icon">✏️</span>
-      <span class="action-text">Edit Site</span>
-    <% end %>
+  <div class="flex-col-md">
+    <%= link_to "✏️ Edit Site", edit_site_path(site), class: "btn btn-primary btn-full" %>
 
-    <button class="action-btn secondary" onclick="checkSiteNow()">
-      <span class="action-icon">🔍</span>
-      <span class="action-text">Check Now</span>
+    <button class="btn btn-secondary btn-full" onclick="checkSiteNow()">
+      🔍 Check Now
     </button>
 
     <% if site.active? %>
-      <button class="action-btn warning" onclick="pauseMonitoring()">
-        <span class="action-icon">⏸️</span>
-        <span class="action-text">Pause Monitoring</span>
+      <button class="btn btn-warning btn-full" onclick="pauseMonitoring()">
+        ⏸️ Pause Monitoring
       </button>
     <% else %>
-      <button class="action-btn success" onclick="resumeMonitoring()">
-        <span class="action-icon">▶️</span>
-        <span class="action-text">Resume Monitoring</span>
+      <button class="btn btn-success btn-full" onclick="resumeMonitoring()">
+        ▶️ Resume Monitoring
       </button>
     <% end %>
 
-    <%= link_to site_path(site), method: :delete,
+    <%= link_to "🗑️ Delete Site", site_path(site), method: :delete,
                 confirm: "Are you sure you want to delete this site? This action cannot be undone.",
-                class: "action-btn danger" do %>
-      <span class="action-icon">🗑️</span>
-      <span class="action-text">Delete Site</span>
-    <% end %>
+                class: "btn btn-danger btn-full" %>
   </div>
 </div>
