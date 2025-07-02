@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>Recent Status</h2>
+  <h2>Snapshots</h2>
 
   <% if site.snapshots.any? %>
     <div class="status-list">
@@ -25,15 +25,9 @@
         </div>
       <% end %>
     </div>
-
-    <div class="text-center">
-      <%= link_to "View Full History", "#", class: "link" %>
-    </div>
   <% else %>
     <div class="empty-state">
-      <div>📊</div>
-      <p>No status checks yet</p>
-      <p class="text-muted">Status history will appear after the first monitoring check</p>
+      <p>No snapshots taken yet</p>
     </div>
   <% end %>
 </div>

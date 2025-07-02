@@ -1,0 +1,2 @@
+module Site::SnapshotsHelper
+end

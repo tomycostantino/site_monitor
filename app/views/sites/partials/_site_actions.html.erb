@@ -4,9 +4,7 @@
   <div class="flex-col-md">
     <%= link_to "✏️ Edit Site", edit_site_path(site), class: "btn btn-primary btn-full" %>
 
-    <button class="btn btn-secondary btn-full" onclick="checkSiteNow()">
-      🔍 Check Now
-    </button>
+    <%= button_to "🔍 Check Now", site_snapshots_path(@site), method: :post, class: "btn btn-secondary btn-full" %>
 
     <% if site.active? %>
       <button class="btn btn-warning btn-full" onclick="pauseMonitoring()">

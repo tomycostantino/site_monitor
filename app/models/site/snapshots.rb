@@ -1,4 +1,4 @@
-module Site::Snapshotable
+module Site::Snapshots
   extend ActiveSupport::Concern
   include Site::Fetchable
 
