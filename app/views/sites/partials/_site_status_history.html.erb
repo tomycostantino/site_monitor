@@ -12,6 +12,9 @@
                 <%= snapshot.response_code || 'N/A' %>
               </span>
               <%= snapshot.status&.humanize || 'Unknown' %>
+              <% if snapshot.html_content.attached? %>
+                <%= link_to "Download", download_attachment_path(snapshot.html_content.blob_id) %>
+              <% end %>
             </div>
             <div class="text-muted">
               <%= time_ago_in_words(snapshot.created_at) %> ago
