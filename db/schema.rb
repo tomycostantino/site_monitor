@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_02_171754) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_05_210507) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,15 +39,35 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_02_171754) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "site_snapshots", force: :cascade do |t|
-    t.integer "site_id", null: false
+  create_table "site_session_action_snapshots", force: :cascade do |t|
+    t.integer "site_session_action_id", null: false
     t.string "status"
     t.integer "response_code"
     t.text "error_message"
     t.string "captured_at"
+    t.datetime "updated_at", null: false
+    t.index ["site_session_action_id"], name: "index_site_session_action_snapshots_on_site_session_action_id"
+  end
+
+  create_table "site_session_actions", force: :cascade do |t|
+    t.integer "site_sessions_id", null: false
+    t.string "name"
+    t.json "query_params"
+    t.json "data"
+    t.string "kind"
+    t.integer "order"
+    t.integer "wait_seconds", default: 0
+    t.boolean "record_response", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_site_snapshots_on_site_id"
+    t.index ["site_sessions_id"], name: "index_site_session_actions_on_site_sessions_id"
+  end
+
+  create_table "site_sessions", force: :cascade do |t|
+    t.integer "site_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_site_sessions_on_site_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -65,5 +85,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_02_171754) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "site_snapshots", "sites"
+  add_foreign_key "site_session_action_snapshots", "site_session_actions"
+  add_foreign_key "site_session_actions", "site_sessions", column: "site_sessions_id"
+  add_foreign_key "site_sessions", "sites"
 end

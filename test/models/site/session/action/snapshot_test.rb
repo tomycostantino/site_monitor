@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Site::SnapshotTest < ActiveSupport::TestCase
+class Site::Session::Action::SnapshotTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
